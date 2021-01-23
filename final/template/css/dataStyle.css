@@ -1,0 +1,171 @@
+* {
+  font-family: Garamond, Georgia, serif;
+}
+.container {
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-top: 7%;
+  width: 30%;
+  padding: 10px;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body {
+  background: linear-gradient(#66FF99, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.container {
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 2.5%;
+}
+.center {
+  position: absolute;
+  width: 14%;
+  text-align: center;
+  font-size: 16px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li a {
+  display: block;
+  color: black;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+li a:hover {
+  color: white;
+  text-decoration: none;
+}
+input[type=text], input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 30px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-decoration-color: black;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+select {
+  color: grey;
+}
+img { 
+  width: 75%;
+  height: auto;
+}
+br {
+  margin-bottom: 20px;
+}
+h2.fs-title {
+  font-size: 27px;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 20px;
+}
+p.secondText {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28px;
+  color: gray;
+  margin-top: 25px;
+}
+.line-seperator {
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  background: black;
+  margin-bottom: 30px;
+}
+#msform {
+  width: 400px;
+  margin-right: 100px;
+  margin: 0px auto;
+  text-align: center;
+  position: relative;
+}
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 10%;
+  position: relative;
+}
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+#msform .action-button {
+  width: 100px;
+  background: #27AE60;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+.flip {
+  border-radius: 4px;
+  background-color: #66FF99;
+  border: none;
+  padding: 12px;
+  width: 350px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.flip span {
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.flip span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.flip:hover span {
+  padding-right: 20px;
+}
+.flip:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.panelStyle {
+  margin-bottom: 50px;
+}
+

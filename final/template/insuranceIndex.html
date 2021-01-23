@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Style Imports -->
+      <!-- <link rel="stylesheet" href="css/indexStyle.css"> -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <!-- Meta Tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+        </script>
+        <![endif]-->
+  </head>
+
+  <title>Forecast Cost</title>
+
+  <ul class="navbar">
+    <li><a href="/insuranceLanding">Home Page</a></li>
+    <li><a href="/insuranceIndex">Forecast Insurance</a></li>
+    <li><a href="/insuranceData">View Data</a></li>
+  </ul>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm" style="margin-right: 8%">
+        <form id="msform" action="{{ url_for('predict')}}" method="post">
+          <fieldset>
+            <h2 class="fs-title">Fill Out Information</h2>
+              <div class="line-seperator"></div>
+              
+              <input type="number" name="age" required="required" placeholder="Age"/>
+            
+              <select name="sex" style="margin-bottom: 30px">
+                <option value="" disabled selected>Sex</option>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+              </select>
+
+              <input type="number" name="bmi" required="required" placeholder="BMI"/>
+              
+              <input type="number" name="children" required="required" placeholder="Number of Children"/>
+              
+              <select name="smoker" style="margin-bottom: 30px">
+                <option value="" disabled selected>Smoker</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+
+              <select name="region" style="margin-bottom: 30px">
+                <option value="" disabled selected>Region</option>
+                <option value="0">Northeast</option>
+                <option value="1">Northwest</option>
+                <option value="2">Southeast</option>
+                <option value="3">Southwest</option>
+              </select>
+
+              <button type="submit" class="button"><span>Enter</span></button>
+
+            </fieldset>
+          </form>
+        </div>
+
+      <div class="col-sm" id="results">
+        <span class="label">Linear Regression</span><span class="label2">79.63% Accurate</span>
+        <p id="predictionText">{{ prediction_text1 }}</p>
+
+        <br>
+        <br>
+
+        <span class="label">Polynomial Regression</span><span class="label2">88.46% Accurate</span>
+        <p id="predictionText">{{ prediction_text5 }}</p>
+
+        <br>
+        <br>
+
+        <span class="label">Ridge Regression</span><span class="label2">79.61% Accurate</span>
+        <p id="predictionText">{{ prediction_text3 }}</p>
+
+        <br>
+        <br>
+
+        <span class="label">Lasso Regression</span><span class="label2">79.63% Accurate</span>
+        <p id="predictionText">{{ prediction_text4 }}</p>
+
+        <br>
+        <br>
+
+        <span class="label">Random Forest Regression</span><span class="label2">87.34% Accurate</span>
+        <p id="predictionText">{{ prediction_text5 }}</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    * {
+      font-family: Garamond, Georgia, serif;
+    }
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+    body {
+      background: linear-gradient(#66FF99, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+    }
+    .container {
+      width: 100%;
+      border-radius: 5px;
+      padding: 20px;
+      margin-top: 2.5%;
+    }
+    .center {
+      position: absolute;
+      width: 14%;
+      text-align: center;
+      font-size: 16px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li a {
+      display: block;
+      color: black;
+      padding: 6px 12px;
+      text-decoration: none;
+    }
+    li a:hover {
+      color: white;
+      text-decoration: none;
+    }
+    input[type=text], input[type=number], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin-bottom: 30px;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      text-decoration-color: black;
+    }
+    input[type=submit] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+    option[type=disabled] {
+      color: grey;
+    }
+    ::placeholder { 
+      color: black;
+      opacity: 1; 
+    }
+    #predictionText {
+      margin-top: 15px;
+    }
+    .label {
+      background-color: #66FF99;
+      color: black;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .label2 {
+      background-color: black;
+      color: #66FF99;
+      padding: 10px;
+      border-radius: 10px;
+      margin-left: 10px;
+    }
+    #results {
+      margin-top: 45px;
+    }
+    #msform {
+      width: 400px;
+      margin-right: 100px;
+      margin: 0px auto;
+      text-align: center;
+      position: relative;
+    }
+    #msform fieldset {
+      background: white;
+      border: 0 none;
+      border-radius: 3px;
+      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0 10%;
+      position: relative;
+    }
+    #msform fieldset:not(:first-of-type) {
+      display: none;
+    }
+    #msform .action-button {
+      width: 100px;
+      background: #27AE60;
+      font-weight: bold;
+      color: white;
+      border: 0 none;
+      border-radius: 1px;
+      cursor: pointer;
+      padding: 10px 5px;
+      margin: 10px 5px;
+    }
+    #msform .action-button:hover, #msform .action-button:focus {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+    }
+    .line-seperator {
+      display: inline-block;
+      width: 120px;
+      height: 4px;
+      background: #66FF99;
+      margin-bottom: 22px;
+    }
+    .fs-title {
+      font-size: 22px;
+      margin-bottom: 25px;
+      margin-top: 10px;
+      text-transform: uppercase;
+      color: #2C3E50;
+    }
+    .fs-subtitle {
+      font-weight: normal;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .button {
+      border-radius: 4px;
+      background-color: #66FF99;
+      border: none;
+      padding: 15px;
+      width: 110px;
+      transition: all 0.5s;
+    }
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    .button span:after {
+      content: '»';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    .button:hover span {
+      padding-right: 20px;
+    }
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+  </style>
+
+</html>
